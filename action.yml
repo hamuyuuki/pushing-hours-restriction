@@ -2,10 +2,21 @@ name: 'Pushing Hours Restriction'
 description: ''
 author: 'hamuyuuki'
 inputs:
-  milliseconds: # change this
+  appId:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: ''
+  privateKey:
+    required: true
+    description: ''
+  installationId:
+    required: true
+    description: ''
+  startHour:
+    required: true
+    description: ''
+  endHour:
+    required: true
+    description: ''
 runs:
   using: 'node12'
   main: 'dist/index.js'
