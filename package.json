@@ -1,8 +1,8 @@
 {
-  "name": "typescript-action",
+  "name": "pushing-hours-restriction",
   "version": "0.0.0",
   "private": true,
-  "description": "TypeScript template action",
+  "description": "",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/hamuyuuki/pushing-hours-restriction.git"
   },
   "keywords": [
     "actions",
     "node",
     "setup"
   ],
-  "author": "",
+  "author": "hamuyuuki",
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.2.6"
