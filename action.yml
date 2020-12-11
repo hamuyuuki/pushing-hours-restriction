@@ -1,5 +1,5 @@
 name: 'Pushing Hours Restriction'
-description: 'Add pusing hours restriction to the Branch protection rule of the default branch'
+description: 'Add pushing hours restriction to the Branch protection rule of the default branch'
 author: 'hamuyuuki'
 inputs:
   appId:

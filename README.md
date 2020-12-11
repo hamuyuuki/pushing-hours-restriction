@@ -1,5 +1,5 @@
 # Pushing Hours Restriction
-This GitHub Action adds pusing hours restriction to the Branch protection rule of the default branch.
+This GitHub Action adds pushing hours restriction to the Branch protection rule of the default branch.
 
 # Usage
 
