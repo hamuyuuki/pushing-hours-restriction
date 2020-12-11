@@ -3,7 +3,7 @@ name: Deploy a GitHub Action
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   checking-deployable:
