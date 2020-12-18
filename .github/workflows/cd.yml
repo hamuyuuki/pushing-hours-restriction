@@ -1,10 +1,8 @@
-name: Deploy a GitHub Action
-
+name: CD
 on:
   push:
     branches:
       - main
-
 jobs:
   checking-deployable:
     runs-on: ubuntu-latest
@@ -23,7 +21,6 @@ jobs:
         package_version=v$(node -e "console.log(require('./package.json').version)")
         new_tag=$(if [ ! $(git tag | grep $package_version) ]; then echo $package_version; fi)
         echo ::set-output name=new_tag::$new_tag
-
   creating-release_note:
     runs-on: ubuntu-latest
     needs: checking-deployable
