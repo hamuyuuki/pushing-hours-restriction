@@ -7,6 +7,13 @@ For example, if you want to restrict pushes to working hours, you can set pushin
 
 # Usage
 
+This GitHub Action enables/disables [_Restrict who can push to matching branches_ rule of the branch protection](https://docs.github.com/en/github/administering-a-repository/about-protected-branches#restrict-who-can-push-to-matching-branches) automatically.
+
+## 1. Create a branch protection
+You need to create a branch protection for the default branch. You can refer to https://docs.github.com/en/github/administering-a-repository/managing-a-branch-protection-rule#creating-a-branch-protection-rule.
+
+## 2. Create a workflow
+
 You can create a `.github/workflows/pushing-hours-restriction.yml` and put this code.
 
 ```yaml
@@ -32,7 +39,7 @@ jobs:
           TZ: Asia/Tokyo
 ```
 
-## Reduce the number of executing actions
+If you want reduce the number of executing actions, you can put this code.
 
 ```yaml
 name: Pushing Hours Restriction
