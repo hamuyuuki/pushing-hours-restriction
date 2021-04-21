@@ -64,6 +64,23 @@ jobs:
           TZ: Asia/Tokyo
 ```
 
+# Inputs
+
+## appId
+If you authenticate with a GitHub App, you should set this input. You can set **App Id** of your GitHub App.
+
+## privateKey
+If you authenticate with a GitHub App, you should set this input. You can set **Private key** of your GitHub App.
+
+## installationId
+If you authenticate with a GitHub App, you should set this input. You can set the installation id of installed your GitHub App.
+
+## startHour
+This input is required. You can set a start of pushing hours.
+
+## endHour
+This input is required. You can set an end of pushing hours.
+
 # Authentication
 WIP
 
