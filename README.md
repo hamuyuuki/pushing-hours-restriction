@@ -82,12 +82,20 @@ This input is required. You can set a start of pushing hours.
 This input is required. You can set an end of pushing hours.
 
 # Authentication
-WIP
+You have two ways to authenticate. You can choose a GitHub Apps or a Personal Access Token.
+
+## Using a GitHub App
+If you use a GitHub App to authenticate, you don't need to create a GitHub user as a bot. 
+
+### 1. Create a GitHub App
+
+### 2. Create a private key
+
+### 3. Change a permission
+
+### 4. Install the GitHub App
 
 ## Using a Personal Access Token
-WIP
-
-## Using a GitHub Apps
 WIP
 
 # Limitation
