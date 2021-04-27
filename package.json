@@ -6,6 +6,7 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "tsc",
+    "watch": "tsc -w",
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
     "lint": "eslint src/**/*.ts",
