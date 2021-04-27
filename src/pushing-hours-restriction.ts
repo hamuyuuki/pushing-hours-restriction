@@ -1,5 +1,6 @@
 import {graphql} from '@octokit/graphql'
 import {createAppAuth} from '@octokit/auth-app'
+import {Octokit} from '@octokit/rest'
 
 export function currentPushableHours(
   startHour: number,
@@ -16,11 +17,25 @@ export function currentPushableHours(
 export async function updateBranchRestrictionRule(
   appId: number,
   privateKey: string,
-  installationId: number,
   repository_owner: string,
   repository_name: string,
   restrictsPushes: boolean
 ): Promise<void> {
+  const octokit = new Octokit({
+    authStrategy: createAppAuth,
+    auth: {
+      appId,
+      privateKey
+    }
+  })
+
+  const installationId = (
+    await octokit.rest.apps.getRepoInstallation({
+      owner: repository_owner,
+      repo: repository_name
+    })
+  ).data.id
+
   const graphqlWithAuth = graphql.defaults({
     request: {
       hook: createAppAuth({
