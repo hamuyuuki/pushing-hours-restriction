@@ -78,7 +78,8 @@ export async function updateBranchRestrictionRule(
       }
     `,
     {
-      branchProtectionRuleId: repository.defaultBranchRef.branchProtectionRule.id,
+      branchProtectionRuleId:
+        repository.defaultBranchRef.branchProtectionRule.id,
       restrictsPushes
     }
   )
