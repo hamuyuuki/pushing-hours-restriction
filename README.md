@@ -91,7 +91,7 @@ If you use a GitHub App to authenticate, you don't need to create a GitHub user 
 
 ### 1. Create a GitHub App
 
-You can create a new GitHub App on your organization account(e.g.: https://github.com/organizations/:organization/settings/apps/new) or your account(e.g.: https://github.com/settings/apps/new)
+You can create a new GitHub App on your organization account(e.g.: https://github.com/organizations/:organization/settings/apps/new).
 
 When you create a GitHub App, you should select an access level to _Read & Write_ on the _Administration_ of _Repository permissions_. And you should _Only on this account_ option on the _Where can this GitHub App be installed?_.
 
@@ -101,7 +101,7 @@ You can generate a new private key on GitHub App settings.
 
 ### 3. Install the GitHub App
 
-You can select _Install App_ menu and install your GitHub App to your organization account or your account.
+You can select _Install App_ menu and install your GitHub App to your organization account.
 
 ## Using a Personal Access Token
 
@@ -109,5 +109,6 @@ WIP
 
 # Limitation
 
+- Only run this GitHub Action on organization repositories.
 - Restrict pushes to the default branch from Friday to Sunday.
 - Please set `TZ` environment variable if you want to use hours with time zone.
