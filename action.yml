@@ -4,16 +4,16 @@ author: 'hamuyuuki'
 inputs:
   appId:
     required: true
-    description: ''
+    description: 'If you authenticate with a GitHub App, you should set this input. You can set App Id of your GitHub App.'
   privateKey:
     required: true
-    description: ''
+    description: 'If you authenticate with a GitHub App, you should set this input. You can set Private key of your GitHub App.'
   startHour:
     required: true
-    description: ''
+    description: 'You can set a start of pushing hours.'
   endHour:
     required: true
-    description: ''
+    description: 'You can set an end of pushing hours.'
 runs:
   using: 'node12'
   main: 'dist/index.js'
