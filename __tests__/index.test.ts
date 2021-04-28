@@ -7,9 +7,9 @@ describe('index', () => {
     test('', () => {
       process.env['INPUT_APPID'] = ''
       process.env['INPUT_PRIVATEKEY'] = ``
-      process.env['INPUT_INSTALLATIONID'] = ''
       process.env['INPUT_STARTHOUR'] = '10'
       process.env['INPUT_ENDHOUR'] = '18'
+      process.env['GITHUB_REPOSITORY'] = 'hamuyuuki/pushing-hours-restriction'
 
       const np = process.execPath
       const ip = path.join(__dirname, '..', 'lib', 'index.js')

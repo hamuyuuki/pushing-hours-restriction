@@ -4,14 +4,12 @@ import * as github from '@actions/github'
 export function getInputs(): {
   appId: number
   privateKey: string
-  installationId: number
   startHour: number
   endHour: number
 } {
   return {
     appId: +core.getInput('appId'),
     privateKey: core.getInput('privateKey'),
-    installationId: +core.getInput('installationId'),
     startHour: +core.getInput('startHour'),
     endHour: +core.getInput('endHour')
   }

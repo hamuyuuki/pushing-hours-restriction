@@ -8,9 +8,6 @@ inputs:
   privateKey:
     required: true
     description: ''
-  installationId:
-    required: true
-    description: ''
   startHour:
     required: true
     description: ''
