@@ -9,18 +9,18 @@ jobs:
     outputs:
       new_tag: ${{ steps.checking-deployable-github-action.outputs.new_tag }}
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '12'
-    - name: Check deployable a GitHub Action
-      id: checking-deployable-github-action
-      run: |
-        package_version=v$(node -e "console.log(require('./package.json').version)")
-        new_tag=$(if [ ! $(git tag | grep $package_version) ]; then echo $package_version; fi)
-        echo ::set-output name=new_tag::$new_tag
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - name: Check deployable a GitHub Action
+        id: checking-deployable-github-action
+        run: |
+          package_version=v$(node -e "console.log(require('./package.json').version)")
+          new_tag=$(if [ ! $(git tag | grep $package_version) ]; then echo $package_version; fi)
+          echo ::set-output name=new_tag::$new_tag
   creating-release_note:
     runs-on: ubuntu-latest
     needs: checking-deployable
@@ -28,11 +28,11 @@ jobs:
     outputs:
       upload_url: ${{ steps.release-drafter.outputs.upload_url }}
     steps:
-    - uses: release-drafter/release-drafter@v5
-      id: release-drafter
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        name: ${{ needs.checking-deployable.outputs.new_tag }}
-        tag: ${{ needs.checking-deployable.outputs.new_tag }}
-        publish: true
+      - uses: release-drafter/release-drafter@v5
+        id: release-drafter
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          name: ${{ needs.checking-deployable.outputs.new_tag }}
+          tag: ${{ needs.checking-deployable.outputs.new_tag }}
+          publish: true
