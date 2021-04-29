@@ -21,9 +21,27 @@ jobs:
           package_version=v$(node -e "console.log(require('./package.json').version)")
           new_tag=$(if [ ! $(git tag | grep $package_version) ]; then echo $package_version; fi)
           echo ::set-output name=new_tag::$new_tag
-  creating-release_note:
+  deploying-action:
     runs-on: ubuntu-latest
     needs: checking-deployable
+    if: ${{ needs.checking-deployable.outputs.new_tag }}
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install
+      - run: npm run build
+      - run: npm run package
+      - name: Commit a new pushing-hours-restriction version
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          git commit -m "Deploy the pushing-hours-restriction@${{ needs.checking-deployable.outputs.new_tag }} action" -a
+      - uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+  creating-release_note:
+    runs-on: ubuntu-latest
+    needs: [checking-deployable, deploying-action]
     if: ${{ needs.checking-deployable.outputs.new_tag }}
     outputs:
       upload_url: ${{ steps.release-drafter.outputs.upload_url }}
