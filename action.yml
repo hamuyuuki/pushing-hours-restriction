@@ -8,6 +8,10 @@ inputs:
   privateKey:
     required: true
     description: 'If you authenticate with a GitHub App, you should set this input. You can set Private key of your GitHub App.'
+  weekdays:
+    required: false
+    default: 'MON,TUE,WED,THU'
+    description: "This input is optional. You can set a comma delimited short weekday name like 'XXX,XXX'. When you set a value to weekdays, you can enable pushing hours on that weekdays."
   startHour:
     required: true
     description: 'You can set a start of pushing hours.'
