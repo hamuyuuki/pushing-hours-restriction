@@ -34,6 +34,7 @@ function getInputs() {
     return {
         appId: +core.getInput('appId'),
         privateKey: core.getInput('privateKey'),
+        weekdays: core.getInput('weekdays').replace(' ', '').split(','),
         startHour: +core.getInput('startHour'),
         endHour: +core.getInput('endHour')
     };
@@ -71,7 +72,7 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         const inputs = actions_toolkit_1.getInputs();
         const context = actions_toolkit_1.getContext();
-        yield pushing_hours_restriction_1.updateBranchRestrictionRule(inputs.appId, inputs.privateKey, context.repository_owner, context.repository_name, !pushing_hours_restriction_1.currentPushableHours(inputs.startHour, inputs.endHour));
+        yield pushing_hours_restriction_1.updateBranchRestrictionRule(inputs.appId, inputs.privateKey, context.repository_owner, context.repository_name, !pushing_hours_restriction_1.currentPushableHours(inputs.weekdays, inputs.startHour, inputs.endHour));
     });
 }
 run();
@@ -98,9 +99,13 @@ exports.updateBranchRestrictionRule = exports.currentPushableHours = void 0;
 const graphql_1 = __webpack_require__(8467);
 const auth_app_1 = __webpack_require__(7541);
 const rest_1 = __webpack_require__(5375);
-function currentPushableHours(startHour, endHour) {
+const weekdayNames = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+function convertToWeekdayName(weekdayNumber) {
+    return weekdayNames[weekdayNumber];
+}
+function currentPushableHours(weekdays, startHour, endHour) {
     const date_now = new Date();
-    if ([0, 5, 6].includes(date_now.getDay()))
+    if (!weekdays.includes(convertToWeekdayName(date_now.getDay())))
         return false;
     if (date_now.getHours() < startHour || endHour <= date_now.getHours())
         return false;
