@@ -2,12 +2,20 @@ import {graphql} from '@octokit/graphql'
 import {createAppAuth} from '@octokit/auth-app'
 import {Octokit} from '@octokit/rest'
 
+const weekdayNames = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
+
+function convertToWeekdayName(weekdayNumber: number): string {
+  return weekdayNames[weekdayNumber]
+}
+
 export function currentPushableHours(
+  weekdays: string[],
   startHour: number,
   endHour: number
 ): boolean {
   const date_now = new Date()
-  if ([0, 5, 6].includes(date_now.getDay())) return false
+
+  if (!weekdays.includes(convertToWeekdayName(date_now.getDay()))) return false
   if (date_now.getHours() < startHour || endHour <= date_now.getHours())
     return false
 

@@ -5,6 +5,7 @@ describe('pushing-hours-restriction', () => {
   describe('currentPushableHours', () => {
     const startHour = 10
     const endHour = 18
+    const weekdays = ['MON', 'TUE', 'WED', 'THU']
 
     afterEach(() => {
       clear()
@@ -50,19 +51,19 @@ describe('pushing-hours-restriction', () => {
       ) => {
         it('should be false when the current time is less than startHour', () => {
           advanceTo(lessThanStartHour)
-          expect(currentPushableHours(startHour, endHour)).toBe(false)
+          expect(currentPushableHours(weekdays, startHour, endHour)).toBe(false)
         })
         it('should be true when the current time is greater than or equal to startHour', () => {
           advanceTo(greaterThanOrEqualToStartHour)
-          expect(currentPushableHours(startHour, endHour)).toBe(true)
+          expect(currentPushableHours(weekdays, startHour, endHour)).toBe(true)
         })
         it('should be true when the current time is less than endHour', () => {
           advanceTo(lessThanEndHour)
-          expect(currentPushableHours(startHour, endHour)).toBe(true)
+          expect(currentPushableHours(weekdays, startHour, endHour)).toBe(true)
         })
         it('should be false when the current time is greater than or equal to endHour', () => {
           advanceTo(greaterThanOrEqualToEndHour)
-          expect(currentPushableHours(startHour, endHour)).toBe(false)
+          expect(currentPushableHours(weekdays, startHour, endHour)).toBe(false)
         })
       }
     )
@@ -100,19 +101,19 @@ describe('pushing-hours-restriction', () => {
       ) => {
         it('should be false when the current time is less than startHour', () => {
           advanceTo(lessThanStartHour)
-          expect(currentPushableHours(startHour, endHour)).toBe(false)
+          expect(currentPushableHours(weekdays, startHour, endHour)).toBe(false)
         })
         it('should be false when the current time is greater than or equal to startHour', () => {
           advanceTo(greaterThanOrEqualToStartHour)
-          expect(currentPushableHours(startHour, endHour)).toBe(false)
+          expect(currentPushableHours(weekdays, startHour, endHour)).toBe(false)
         })
         it('should be false when the current time is less than endHour', () => {
           advanceTo(lessThanEndHour)
-          expect(currentPushableHours(startHour, endHour)).toBe(false)
+          expect(currentPushableHours(weekdays, startHour, endHour)).toBe(false)
         })
         it('should be false when the current time is greater than or equal to endHour', () => {
           advanceTo(greaterThanOrEqualToEndHour)
-          expect(currentPushableHours(startHour, endHour)).toBe(false)
+          expect(currentPushableHours(weekdays, startHour, endHour)).toBe(false)
         })
       }
     )
