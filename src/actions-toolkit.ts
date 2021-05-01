@@ -4,12 +4,14 @@ import * as github from '@actions/github'
 export function getInputs(): {
   appId: number
   privateKey: string
+  weekdays: string[]
   startHour: number
   endHour: number
 } {
   return {
     appId: +core.getInput('appId'),
     privateKey: core.getInput('privateKey'),
+    weekdays: core.getInput('weekdays').replace(' ', '').split(','),
     startHour: +core.getInput('startHour'),
     endHour: +core.getInput('endHour')
   }
