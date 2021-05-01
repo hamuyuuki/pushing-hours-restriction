@@ -73,6 +73,10 @@ If you authenticate with a GitHub App, you should set this input. You can set **
 
 If you authenticate with a GitHub App, you should set this input. You can set **Private key** of your GitHub App.
 
+## weekdays
+
+This input is optional. You can set a comma delimited short weekday name like `'XXX,XXX'`. When you set a value to weekdays, you can enable pushing hours on that weekdays. The default value is 'MON,TUE,WED,THU'.
+
 ## startHour
 
 This input is required. You can set a start of pushing hours.
