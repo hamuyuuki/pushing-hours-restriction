@@ -4,6 +4,9 @@
   "private": true,
   "description": "Add pushing hours restriction to the Branch protection rule of the default branch",
   "main": "lib/index.js",
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
