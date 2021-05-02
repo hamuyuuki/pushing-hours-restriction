@@ -35,8 +35,6 @@ jobs:
           privateKey: ${{ secrets.PUSHING_HOURS_RESTRICTION_PRIVATE_KEY }}
           startHour: 9
           endHour: 18
-        env:
-          TZ: Asia/Tokyo
 ```
 
 If you want reduce the number of executing actions, you can put this code.
@@ -47,7 +45,7 @@ name: Pushing Hours Restriction
 on:
   schedule:
     # NOTE: Execute startHour and endHour from Monday to Thursday with UTC
-    - cron: '0 0,9 * * MON-THU'
+    - cron: '0 9,18 * * MON-THU'
 
 jobs:
   pushing_hours_restriction:
@@ -59,8 +57,6 @@ jobs:
           privateKey: ${{ secrets.PUSHING_HOURS_RESTRICTION_PRIVATE_KEY }}
           startHour: 9
           endHour: 18
-        env:
-          TZ: Asia/Tokyo
 ```
 
 # Inputs
@@ -84,6 +80,10 @@ This input is required. You can set a start of pushing hours.
 ## endHour
 
 This input is required. You can set an end of pushing hours.
+
+## timeZone
+
+This input is optional. You can set an IANA time zone name (e.g. `'Asia/Tokyo'`). When you set a value to timeZone, you can enable pushing hours with that time zone. The default value is `'Etc/UTC'`.
 
 # Authentication
 
@@ -115,4 +115,3 @@ WIP
 
 - Only run this GitHub Action on organization repositories.
 - Restrict pushes to the default branch from Friday to Sunday.
-- Please set `TZ` environment variable if you want to use hours with time zone.

@@ -10,6 +10,7 @@ describe('index', () => {
       process.env['INPUT_WEEKDAYS'] = 'MON,TUE,WED,THU'
       process.env['INPUT_STARTHOUR'] = '10'
       process.env['INPUT_ENDHOUR'] = '18'
+      process.env['INPUT_TIMEZONE'] = 'Etc/UTC'
       process.env['GITHUB_REPOSITORY'] = 'hamuyuuki/pushing-hours-restriction'
 
       const np = process.execPath

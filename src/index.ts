@@ -13,7 +13,12 @@ async function run(): Promise<void> {
     inputs.privateKey,
     context.repository_owner,
     context.repository_name,
-    !currentPushableHours(inputs.weekdays, inputs.startHour, inputs.endHour)
+    !currentPushableHours(
+      inputs.weekdays,
+      inputs.startHour,
+      inputs.endHour,
+      inputs.timeZone
+    )
   )
 }
 

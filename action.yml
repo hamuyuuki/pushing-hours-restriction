@@ -18,6 +18,10 @@ inputs:
   endHour:
     required: true
     description: 'You can set an end of pushing hours.'
+  timeZone:
+    required: false
+    default: 'Etc/UTC'
+    description: "You can set an IANA time zone name (e.g. 'Asia/Tokyo'). When you set a value to timeZone, you can enable pushing hours with that time zone."
 runs:
   using: 'node12'
   main: 'dist/index.js'
