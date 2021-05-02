@@ -9,11 +9,23 @@ For example, if you want to restrict pushes to working hours, you can set pushin
 
 This GitHub Action enables/disables [_Restrict who can push to matching branches_ rule of the branch protection](https://docs.github.com/en/github/administering-a-repository/about-protected-branches#restrict-who-can-push-to-matching-branches) automatically.
 
-## 1. Create a branch protection
+## 1. Create a GitHub App
+
+You can create a new GitHub App on your organization account(e.g.: https://github.com/organizations/:organization/settings/apps/new).
+
+When you create a GitHub App, you should select an access level to _Read & Write_ on the _Administration_ of _Repository permissions_. And you should _Only on this account_ option on the _Where can this GitHub App be installed?_.
+
+Then you can generate a new private key on GitHub App settings.
+
+## 2. Install the GitHub App
+
+You can select _Install App_ menu and install your GitHub App to your organization account.
+
+## 3. Create a branch protection
 
 You need to create a branch protection for the default branch. You can refer to https://docs.github.com/en/github/administering-a-repository/managing-a-branch-protection-rule#creating-a-branch-protection-rule.
 
-## 2. Create a workflow
+## 4. Create a workflow
 
 You can create a `.github/workflows/pushing-hours-restriction.yml` and put this code.
 
@@ -85,33 +97,6 @@ This input is required. You can set an end of pushing hours.
 
 This input is optional. You can set an IANA time zone name (e.g. `'Asia/Tokyo'`). When you set a value to timeZone, you can enable pushing hours with that time zone. The default value is `'Etc/UTC'`.
 
-# Authentication
-
-You have two ways to authenticate. You can choose a GitHub Apps or a Personal Access Token.
-
-## Using a GitHub App
-
-If you use a GitHub App to authenticate, you don't need to create a GitHub user as a bot.
-
-### 1. Create a GitHub App
-
-You can create a new GitHub App on your organization account(e.g.: https://github.com/organizations/:organization/settings/apps/new).
-
-When you create a GitHub App, you should select an access level to _Read & Write_ on the _Administration_ of _Repository permissions_. And you should _Only on this account_ option on the _Where can this GitHub App be installed?_.
-
-### 2. Create a private key
-
-You can generate a new private key on GitHub App settings.
-
-### 3. Install the GitHub App
-
-You can select _Install App_ menu and install your GitHub App to your organization account.
-
-## Using a Personal Access Token
-
-WIP
-
 # Limitation
 
 - Only run this GitHub Action on organization repositories.
-- Restrict pushes to the default branch from Friday to Sunday.
