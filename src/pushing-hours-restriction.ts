@@ -1,6 +1,7 @@
 import {graphql} from '@octokit/graphql'
 import {createAppAuth} from '@octokit/auth-app'
 import {Octokit} from '@octokit/rest'
+import {utcToZonedTime} from 'date-fns-tz'
 
 const weekdayNames = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
 
@@ -11,9 +12,10 @@ function convertToWeekdayName(weekdayNumber: number): string {
 export function currentPushableHours(
   weekdays: string[],
   startHour: number,
-  endHour: number
+  endHour: number,
+  timeZone: string
 ): boolean {
-  const date_now = new Date()
+  const date_now = utcToZonedTime(new Date(), timeZone)
 
   if (!weekdays.includes(convertToWeekdayName(date_now.getDay()))) return false
   if (date_now.getHours() < startHour || endHour <= date_now.getHours())
