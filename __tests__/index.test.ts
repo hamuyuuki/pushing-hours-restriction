@@ -5,8 +5,8 @@ import * as path from 'path'
 describe('index', () => {
   describe('run()', () => {
     test('', () => {
-      process.env['INPUT_APPID'] = ''
-      process.env['INPUT_PRIVATEKEY'] = ``
+      process.env['INPUT_APPID'] = process.env.APPID
+      process.env['INPUT_PRIVATEKEY'] = process.env.PRIVATEKEY
       process.env['INPUT_WEEKDAYS'] = 'MON,TUE,WED,THU'
       process.env['INPUT_STARTHOUR'] = '10'
       process.env['INPUT_ENDHOUR'] = '18'
@@ -18,7 +18,14 @@ describe('index', () => {
       const options: cp.ExecFileSyncOptions = {
         env: process.env
       }
-      console.log(cp.execFileSync(np, [ip], options).toString())
+
+      try {
+        cp.execFileSync(np, [ip], options)
+      } catch (error) {
+        expect(error.stderr.toString()).toBe(
+          'Only organization repositories can have users and team restrictions\n'
+        )
+      }
     })
   })
 })
