@@ -33,3 +33,6 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: npm run test
+        env:
+          APPID: ${{ secrets.TESTING_PUSHING_HOURS_RESTRICTION_APP_ID }}
+          PRIVATEKEY: ${{ secrets.TESTING_PUSHING_HOURS_RESTRICTION_PRIVATE_KEY }}
