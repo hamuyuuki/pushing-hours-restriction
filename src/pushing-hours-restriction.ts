@@ -2,6 +2,8 @@ import {graphql} from '@octokit/graphql'
 import {createAppAuth} from '@octokit/auth-app'
 import {Octokit} from '@octokit/rest'
 import {utcToZonedTime} from 'date-fns-tz'
+import {DefaultBranchProtectionRule, DefaultBranchProtectionRuleQuery, DefaultBranchProtectionRuleQueryVariables} from './generated/graphql'
+import {githubClient} from './client'
 
 const weekdayNames = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
 
@@ -46,6 +48,19 @@ export async function updateBranchRestrictionRule(
     })
   ).data.id
 
+  const installedGithubApp = await createAppAuth({
+    appId,
+    privateKey
+  })({type: 'installation', installationId})
+
+  const {data: {repository}} = await githubClient(token: installedGithubApp.token).query<DefaultBranchProtectionRuleQuery, DefaultBranchProtectionRuleQueryVariables>({
+    query: DefaultBranchProtectionRule,
+    variables: {
+      owner: repository_owner,
+      name: repository_name
+    }
+  })
+
   const graphqlWithAuth = graphql.defaults({
     request: {
       hook: createAppAuth({
@@ -55,20 +70,6 @@ export async function updateBranchRestrictionRule(
       }).hook
     }
   })
-
-  const {repository} = await graphqlWithAuth(
-    `
-      {
-        repository(owner: "${repository_owner}", name: "${repository_name}") {
-          defaultBranchRef {
-            branchProtectionRule {
-              id
-            }
-          }
-        }
-      }
-    `
-  )
 
   await graphqlWithAuth(
     `
@@ -89,7 +90,7 @@ export async function updateBranchRestrictionRule(
     `,
     {
       branchProtectionRuleId:
-        repository.defaultBranchRef.branchProtectionRule.id,
+        repository?.defaultBranchRef?.branchProtectionRule?.id,
       restrictsPushes
     }
   )
