@@ -29535,3 +29535,35 @@ export type Resolvers<ContextType = any> = {
  * Use "Resolvers" root object instead. If you wish to get "IResolvers", add "typesPrefix: I" to your config.
  */
 export type IResolvers<ContextType = any> = Resolvers<ContextType>;
+
+
+export const DefaultBranchProtectionRule = gql`
+    query defaultBranchProtectionRule($owner: String!, $name: String!) {
+  repository(owner: $owner, name: $name) {
+    defaultBranchRef {
+      branchProtectionRule {
+        id
+      }
+    }
+  }
+}
+    `;
+export type DefaultBranchProtectionRuleQueryVariables = Exact<{
+  owner: Scalars['String'];
+  name: Scalars['String'];
+}>;
+
+
+export type DefaultBranchProtectionRuleQuery = (
+  { __typename?: 'Query' }
+  & { repository?: Maybe<(
+    { __typename?: 'Repository' }
+    & { defaultBranchRef?: Maybe<(
+      { __typename?: 'Ref' }
+      & { branchProtectionRule?: Maybe<(
+        { __typename?: 'BranchProtectionRule' }
+        & Pick<BranchProtectionRule, 'id'>
+      )> }
+    )> }
+  )> }
+);
