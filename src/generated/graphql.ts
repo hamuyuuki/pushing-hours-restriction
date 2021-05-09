@@ -29537,6 +29537,18 @@ export type Resolvers<ContextType = any> = {
 export type IResolvers<ContextType = any> = Resolvers<ContextType>;
 
 
+export const UpdateDefaultBranchProtectionRule = gql`
+    mutation updateDefaultBranchProtectionRule($branchProtectionRuleId: ID!, $restrictsPushes: Boolean!) {
+  updateBranchProtectionRule(
+    input: {branchProtectionRuleId: $branchProtectionRuleId, restrictsPushes: $restrictsPushes}
+  ) {
+    branchProtectionRule {
+      id
+      restrictsPushes
+    }
+  }
+}
+    `;
 export const DefaultBranchProtectionRule = gql`
     query defaultBranchProtectionRule($owner: String!, $name: String!) {
   repository(owner: $owner, name: $name) {
@@ -29548,6 +29560,23 @@ export const DefaultBranchProtectionRule = gql`
   }
 }
     `;
+export type UpdateDefaultBranchProtectionRuleMutationVariables = Exact<{
+  branchProtectionRuleId: Scalars['ID'];
+  restrictsPushes: Scalars['Boolean'];
+}>;
+
+
+export type UpdateDefaultBranchProtectionRuleMutation = (
+  { __typename?: 'Mutation' }
+  & { updateBranchProtectionRule?: Maybe<(
+    { __typename?: 'UpdateBranchProtectionRulePayload' }
+    & { branchProtectionRule?: Maybe<(
+      { __typename?: 'BranchProtectionRule' }
+      & Pick<BranchProtectionRule, 'id' | 'restrictsPushes'>
+    )> }
+  )> }
+);
+
 export type DefaultBranchProtectionRuleQueryVariables = Exact<{
   owner: Scalars['String'];
   name: Scalars['String'];
