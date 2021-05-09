@@ -23,7 +23,7 @@ describe('index', () => {
         cp.execFileSync(np, [ip], options)
       } catch (error) {
         expect(error.stderr.toString()).toBe(
-          'Only organization repositories can have users and team restrictions\n'
+          'GraphQL error: Only organization repositories can have users and team restrictions\n'
         )
       }
     })
