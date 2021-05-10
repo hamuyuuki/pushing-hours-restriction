@@ -1,0 +1,16 @@
+mutation updateDefaultBranchProtectionRule(
+  $branchProtectionRuleId: ID!
+  $restrictsPushes: Boolean!
+) {
+  updateBranchProtectionRule(
+    input: {
+      branchProtectionRuleId: $branchProtectionRuleId
+      restrictsPushes: $restrictsPushes
+    }
+  ) {
+    branchProtectionRule {
+      id
+      restrictsPushes
+    }
+  }
+}

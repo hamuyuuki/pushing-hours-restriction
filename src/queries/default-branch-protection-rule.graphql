@@ -1,0 +1,9 @@
+query defaultBranchProtectionRule($owner: String!, $name: String!) {
+  repository(owner: $owner, name: $name) {
+    defaultBranchRef {
+      branchProtectionRule {
+        id
+      }
+    }
+  }
+}

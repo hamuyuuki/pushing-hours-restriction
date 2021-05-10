@@ -1,7 +1,15 @@
-import {graphql} from '@octokit/graphql'
 import {createAppAuth} from '@octokit/auth-app'
 import {Octokit} from '@octokit/rest'
 import {utcToZonedTime} from 'date-fns-tz'
+import {
+  DefaultBranchProtectionRule,
+  DefaultBranchProtectionRuleQuery,
+  DefaultBranchProtectionRuleQueryVariables,
+  UpdateDefaultBranchProtectionRule,
+  UpdateDefaultBranchProtectionRuleMutation,
+  UpdateDefaultBranchProtectionRuleMutationVariables
+} from './generated/graphql'
+import {githubClient} from './client'
 
 const weekdayNames = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
 
@@ -46,51 +54,37 @@ export async function updateBranchRestrictionRule(
     })
   ).data.id
 
-  const graphqlWithAuth = graphql.defaults({
-    request: {
-      hook: createAppAuth({
-        appId,
-        privateKey,
-        installationId
-      }).hook
+  const installedGithubApp = await createAppAuth({
+    appId,
+    privateKey
+  })({type: 'installation', installationId})
+
+  const {
+    data: {repository}
+  } = await githubClient(installedGithubApp.token).query<
+    DefaultBranchProtectionRuleQuery,
+    DefaultBranchProtectionRuleQueryVariables
+  >({
+    query: DefaultBranchProtectionRule,
+    variables: {
+      owner: repository_owner,
+      name: repository_name
     }
   })
 
-  const {repository} = await graphqlWithAuth(
-    `
-      {
-        repository(owner: "${repository_owner}", name: "${repository_name}") {
-          defaultBranchRef {
-            branchProtectionRule {
-              id
-            }
-          }
-        }
-      }
-    `
-  )
+  if (!repository?.defaultBranchRef?.branchProtectionRule) {
+    throw new Error(`Couldn't find defaultBranchProtectionRule id!`)
+  }
 
-  await graphqlWithAuth(
-    `
-      mutation ($branchProtectionRuleId: String!, $restrictsPushes: Boolean!) {
-        updateBranchProtectionRule(
-          input: {
-            branchProtectionRuleId: $branchProtectionRuleId,
-            restrictsPushes: $restrictsPushes
-          }
-        ) {
-          branchProtectionRule {
-            pattern
-            id
-            restrictsPushes
-          }
-        }
-      }
-    `,
-    {
+  await githubClient(installedGithubApp.token).mutate<
+    UpdateDefaultBranchProtectionRuleMutation,
+    UpdateDefaultBranchProtectionRuleMutationVariables
+  >({
+    mutation: UpdateDefaultBranchProtectionRule,
+    variables: {
       branchProtectionRuleId:
         repository.defaultBranchRef.branchProtectionRule.id,
       restrictsPushes
     }
-  )
+  })
 }
