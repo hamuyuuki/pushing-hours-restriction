@@ -1,3 +1,4 @@
+[![GitHub version](https://badge.fury.io/gh/hamuyuuki%2Fpushing-hours-restriction.svg)](https://badge.fury.io/gh/hamuyuuki%2Fpushing-hours-restriction)
 [![CI](https://github.com/hamuyuuki/pushing-hours-restriction/actions/workflows/ci.yml/badge.svg)](https://github.com/hamuyuuki/pushing-hours-restriction/actions/workflows/ci.yml)
 [![CD](https://github.com/hamuyuuki/pushing-hours-restriction/actions/workflows/cd.yml/badge.svg)](https://github.com/hamuyuuki/pushing-hours-restriction/actions/workflows/cd.yml)
 
