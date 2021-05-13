@@ -1,3 +1,6 @@
+[![CI](https://github.com/hamuyuuki/pushing-hours-restriction/actions/workflows/ci.yml/badge.svg)](https://github.com/hamuyuuki/pushing-hours-restriction/actions/workflows/ci.yml)
+[![CD](https://github.com/hamuyuuki/pushing-hours-restriction/actions/workflows/cd.yml/badge.svg)](https://github.com/hamuyuuki/pushing-hours-restriction/actions/workflows/cd.yml)
+
 # Pushing Hours Restriction
 
 This GitHub Action behaves like "pushing hours restriction" of the branch protection rule in the default branch.
