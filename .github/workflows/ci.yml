@@ -36,3 +36,6 @@ jobs:
         env:
           APPID: ${{ secrets.TESTING_PUSHING_HOURS_RESTRICTION_APP_ID }}
           PRIVATEKEY: ${{ secrets.TESTING_PUSHING_HOURS_RESTRICTION_PRIVATE_KEY }}
+      - uses: paambaati/codeclimate-action@v2.7.5
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
