@@ -1,6 +1,8 @@
 [![GitHub version](https://badge.fury.io/gh/hamuyuuki%2Fpushing-hours-restriction.svg)](https://badge.fury.io/gh/hamuyuuki%2Fpushing-hours-restriction)
 [![CI](https://github.com/hamuyuuki/pushing-hours-restriction/actions/workflows/ci.yml/badge.svg)](https://github.com/hamuyuuki/pushing-hours-restriction/actions/workflows/ci.yml)
 [![CD](https://github.com/hamuyuuki/pushing-hours-restriction/actions/workflows/cd.yml/badge.svg)](https://github.com/hamuyuuki/pushing-hours-restriction/actions/workflows/cd.yml)
+[![Maintainability](https://api.codeclimate.com/v1/badges/cde9661e0a22607df12f/maintainability)](https://codeclimate.com/github/hamuyuuki/pushing-hours-restriction/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/cde9661e0a22607df12f/test_coverage)](https://codeclimate.com/github/hamuyuuki/pushing-hours-restriction/test_coverage)
 
 # Pushing Hours Restriction
 
