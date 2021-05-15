@@ -14,7 +14,7 @@
     "lint:format": "prettier --check .",
     "lint:quality-check": "eslint src/**/*.ts __tests__/**/*.test.ts",
     "package": "ncc build --source-map --license licenses.txt",
-    "test": "jest",
+    "test": "jest --coverage",
     "all": "npm run build && npm run format && npm run lint && npm run package && npm test",
     "codegen": "graphql-codegen --config codegen.yml"
   },
