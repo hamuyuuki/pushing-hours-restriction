@@ -33,6 +33,8 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: npm run package
+      - name: Update to the new version in the README.md
+        run: sed -ri "s/v[0-9]{1,}\.[0-9]{1,}\.[0-9]{1,}/${{ needs.checking-deployable.outputs.new_tag }}/g" README.md
       - name: Commit a new pushing-hours-restriction version
         run: |
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
