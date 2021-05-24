@@ -30,7 +30,7 @@
   "author": "hamuyuuki",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.6",
+    "@actions/core": "^1.3.0",
     "@actions/github": "^4.0.0",
     "@octokit/auth-app": "^2.10.3",
     "@octokit/rest": "^18.5.3",
