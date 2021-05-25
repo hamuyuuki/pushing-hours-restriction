@@ -9,3 +9,5 @@ updates:
     ignore:
       - dependency-name: '@types/node'
         update-types: ['version-update:semver-major']
+      # cf. https://github.com/octokit/auth-app.js/issues/282
+      - dependency-name: '@octokit/auth-app'
