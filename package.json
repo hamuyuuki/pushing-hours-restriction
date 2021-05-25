@@ -1,6 +1,6 @@
 {
   "name": "pushing-hours-restriction",
-  "version": "0.5.2",
+  "version": "0.6.0",
   "private": true,
   "description": "Add pushing hours restriction to the Branch protection rule of the default branch",
   "main": "lib/index.js",
