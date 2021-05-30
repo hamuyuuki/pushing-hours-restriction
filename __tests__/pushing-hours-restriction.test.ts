@@ -1,6 +1,7 @@
-import {currentPushableHours} from '../src/pushing-hours-restriction'
-import {advanceTo, clear} from 'jest-date-mock'
 import {toDate} from 'date-fns-tz'
+import {advanceTo, clear} from 'jest-date-mock'
+
+import {currentPushableHours} from '../src/pushing-hours-restriction'
 
 describe('pushing-hours-restriction', () => {
   describe('currentPushableHours', () => {
