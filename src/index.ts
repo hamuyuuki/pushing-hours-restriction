@@ -1,4 +1,5 @@
 import * as core from '@actions/core'
+
 import {getInputs, getContext} from './actions-toolkit'
 import {
   currentPushableHours,

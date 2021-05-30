@@ -1,6 +1,6 @@
+import {InMemoryCache, NormalizedCacheObject} from 'apollo-cache-inmemory'
 import {ApolloClient} from 'apollo-client'
 import {HttpLink} from 'apollo-link-http'
-import {InMemoryCache, NormalizedCacheObject} from 'apollo-cache-inmemory'
 import 'cross-fetch/polyfill'
 
 export function githubClient(

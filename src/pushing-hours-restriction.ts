@@ -1,6 +1,8 @@
 import {createAppAuth} from '@octokit/auth-app'
 import {Octokit} from '@octokit/rest'
 import {utcToZonedTime} from 'date-fns-tz'
+
+import {githubClient} from './client'
 import {
   DefaultBranchProtectionRule,
   DefaultBranchProtectionRuleQuery,
@@ -9,7 +11,6 @@ import {
   UpdateDefaultBranchProtectionRuleMutation,
   UpdateDefaultBranchProtectionRuleMutationVariables
 } from './generated/graphql'
-import {githubClient} from './client'
 
 const weekdayNames = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
 
