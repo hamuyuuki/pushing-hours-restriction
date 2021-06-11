@@ -10,7 +10,7 @@ export function getInputs(): {
   timeZone: string
 } {
   return {
-    appId: +core.getInput('appId'),
+    appId: +core.getInput('app_id'),
     privateKey: core.getInput('privateKey'),
     weekdays: core.getInput('weekdays').replace(' ', '').split(','),
     startHour: +core.getInput('startHour'),

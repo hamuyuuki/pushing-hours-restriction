@@ -2,7 +2,7 @@ name: 'Pushing Hours Restriction'
 description: 'Add pushing hours restriction to the Branch protection rule of the default branch'
 author: 'hamuyuuki'
 inputs:
-  appId:
+  app_id:
     required: true
     description: 'If you authenticate with a GitHub App, you should set this input. You can set App Id of your GitHub App.'
   privateKey:
