@@ -5,7 +5,7 @@ import * as process from 'process'
 describe('index', () => {
   describe('run()', () => {
     test('', () => {
-      process.env['INPUT_APPID'] = process.env.APPID
+      process.env['INPUT_APP_ID'] = process.env.APP_ID
       process.env['INPUT_PRIVATEKEY'] = process.env.PRIVATEKEY
       process.env['INPUT_WEEKDAYS'] = 'MON,TUE,WED,THU'
       process.env['INPUT_STARTHOUR'] = '10'

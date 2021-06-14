@@ -34,7 +34,7 @@ jobs:
       - run: npm run build
       - run: npm run test
         env:
-          APPID: ${{ secrets.TESTING_PUSHING_HOURS_RESTRICTION_APP_ID }}
+          APP_ID: ${{ secrets.TESTING_PUSHING_HOURS_RESTRICTION_APP_ID }}
           PRIVATEKEY: ${{ secrets.TESTING_PUSHING_HOURS_RESTRICTION_PRIVATE_KEY }}
       - uses: paambaati/codeclimate-action@v2.7.5
         env:
