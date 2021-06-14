@@ -15,7 +15,7 @@ export function getInputs(): {
     weekdays: core.getInput('weekdays').replace(' ', '').split(','),
     startHour: +core.getInput('start_hour'),
     endHour: +core.getInput('end_hour'),
-    timeZone: core.getInput('timeZone')
+    timeZone: core.getInput('time_zone')
   }
 }
 

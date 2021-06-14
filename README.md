@@ -99,9 +99,9 @@ This input is required. You can set a start of pushing hours.
 
 This input is required. You can set an end of pushing hours.
 
-## timeZone
+## time_zone
 
-This input is optional. You can set an IANA time zone name (e.g. `'Asia/Tokyo'`). When you set a value to timeZone, you can enable pushing hours with that time zone. The default value is `'Etc/UTC'`.
+This input is optional. You can set an IANA time zone name (e.g. `'Asia/Tokyo'`). When you set a value to time_zone, you can enable pushing hours with that time zone. The default value is `'Etc/UTC'`.
 
 # Limitation
 
