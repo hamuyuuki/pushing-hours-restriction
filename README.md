@@ -49,10 +49,10 @@ jobs:
     steps:
       - uses: hamuyuuki/pushing-hours-restriction@v0.7.0
         with:
-          appId: ${{ secrets.PUSHING_HOURS_RESTRICTION_APP_ID }}
-          privateKey: ${{ secrets.PUSHING_HOURS_RESTRICTION_PRIVATE_KEY }}
-          startHour: 9
-          endHour: 18
+          app_id: ${{ secrets.PUSHING_HOURS_RESTRICTION_APP_ID }}
+          private_key: ${{ secrets.PUSHING_HOURS_RESTRICTION_PRIVATE_KEY }}
+          start_hour: 9
+          end_hour: 18
 ```
 
 If you want reduce the number of executing actions, you can put this code.
@@ -62,7 +62,7 @@ name: Pushing Hours Restriction
 
 on:
   schedule:
-    # NOTE: Execute startHour and endHour from Monday to Thursday with UTC
+    # NOTE: Execute start_hour and end_hour from Monday to Thursday with UTC
     - cron: '0 9,18 * * MON-THU'
 
 jobs:
@@ -71,19 +71,19 @@ jobs:
     steps:
       - uses: hamuyuuki/pushing-hours-restriction@v0.7.0
         with:
-          appId: ${{ secrets.PUSHING_HOURS_RESTRICTION_APP_ID }}
-          privateKey: ${{ secrets.PUSHING_HOURS_RESTRICTION_PRIVATE_KEY }}
-          startHour: 9
-          endHour: 18
+          app_id: ${{ secrets.PUSHING_HOURS_RESTRICTION_APP_ID }}
+          private_key: ${{ secrets.PUSHING_HOURS_RESTRICTION_PRIVATE_KEY }}
+          start_hour: 9
+          end_hour: 18
 ```
 
 # Inputs
 
-## appId
+## app_id
 
 If you authenticate with a GitHub App, you should set this input. You can set **App Id** of your GitHub App.
 
-## privateKey
+## private_key
 
 If you authenticate with a GitHub App, you should set this input. You can set **Private key** of your GitHub App.
 
@@ -91,17 +91,17 @@ If you authenticate with a GitHub App, you should set this input. You can set **
 
 This input is optional. You can set a comma delimited short weekday name (e.g. `'MON,TUE'`). When you set a value to weekdays, you can enable pushing hours on that weekdays. The default value is `'MON,TUE,WED,THU'`.
 
-## startHour
+## start_hour
 
 This input is required. You can set a start of pushing hours.
 
-## endHour
+## end_hour
 
 This input is required. You can set an end of pushing hours.
 
-## timeZone
+## time_zone
 
-This input is optional. You can set an IANA time zone name (e.g. `'Asia/Tokyo'`). When you set a value to timeZone, you can enable pushing hours with that time zone. The default value is `'Etc/UTC'`.
+This input is optional. You can set an IANA time zone name (e.g. `'Asia/Tokyo'`). When you set a value to time_zone, you can enable pushing hours with that time zone. The default value is `'Etc/UTC'`.
 
 # Limitation
 

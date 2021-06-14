@@ -14,8 +14,8 @@ async function run(): Promise<void> {
     await updateBranchRestrictionRule(
       inputs.appId,
       inputs.privateKey,
-      context.repository_owner,
-      context.repository_name,
+      context.repositoryOwner,
+      context.repositoryName,
       !currentPushableHours(
         inputs.weekdays,
         inputs.startHour,

@@ -10,21 +10,21 @@ export function getInputs(): {
   timeZone: string
 } {
   return {
-    appId: +core.getInput('appId'),
-    privateKey: core.getInput('privateKey'),
+    appId: +core.getInput('app_id'),
+    privateKey: core.getInput('private_key'),
     weekdays: core.getInput('weekdays').replace(' ', '').split(','),
-    startHour: +core.getInput('startHour'),
-    endHour: +core.getInput('endHour'),
-    timeZone: core.getInput('timeZone')
+    startHour: +core.getInput('start_hour'),
+    endHour: +core.getInput('end_hour'),
+    timeZone: core.getInput('time_zone')
   }
 }
 
 export function getContext(): {
-  repository_owner: string
-  repository_name: string
+  repositoryOwner: string
+  repositoryName: string
 } {
   return {
-    repository_owner: github.context.repo.owner,
-    repository_name: github.context.repo.repo
+    repositoryOwner: github.context.repo.owner,
+    repositoryName: github.context.repo.repo
   }
 }

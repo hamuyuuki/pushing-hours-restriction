@@ -2,26 +2,26 @@ name: 'Pushing Hours Restriction'
 description: 'Add pushing hours restriction to the Branch protection rule of the default branch'
 author: 'hamuyuuki'
 inputs:
-  appId:
+  app_id:
     required: true
     description: 'If you authenticate with a GitHub App, you should set this input. You can set App Id of your GitHub App.'
-  privateKey:
+  private_key:
     required: true
     description: 'If you authenticate with a GitHub App, you should set this input. You can set Private key of your GitHub App.'
   weekdays:
     required: false
     default: 'MON,TUE,WED,THU'
     description: "You can set a comma delimited short weekday (e.g. 'MON,TUE'). When you set a value to weekdays, you can enable pushing hours on that weekdays."
-  startHour:
+  start_hour:
     required: true
     description: 'You can set a start of pushing hours.'
-  endHour:
+  end_hour:
     required: true
     description: 'You can set an end of pushing hours.'
-  timeZone:
+  time_zone:
     required: false
     default: 'Etc/UTC'
-    description: "You can set an IANA time zone name (e.g. 'Asia/Tokyo'). When you set a value to timeZone, you can enable pushing hours with that time zone."
+    description: "You can set an IANA time zone name (e.g. 'Asia/Tokyo'). When you set a value to time_zone, you can enable pushing hours with that time zone."
 runs:
   using: 'node12'
   main: 'dist/index.js'

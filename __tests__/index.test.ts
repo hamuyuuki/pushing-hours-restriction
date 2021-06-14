@@ -5,12 +5,12 @@ import * as process from 'process'
 describe('index', () => {
   describe('run()', () => {
     test('', () => {
-      process.env['INPUT_APPID'] = process.env.APPID
-      process.env['INPUT_PRIVATEKEY'] = process.env.PRIVATEKEY
+      process.env['INPUT_APP_ID'] = process.env.APP_ID
+      process.env['INPUT_PRIVATE_KEY'] = process.env.PRIVATE_KEY
       process.env['INPUT_WEEKDAYS'] = 'MON,TUE,WED,THU'
-      process.env['INPUT_STARTHOUR'] = '10'
-      process.env['INPUT_ENDHOUR'] = '18'
-      process.env['INPUT_TIMEZONE'] = 'Etc/UTC'
+      process.env['INPUT_START_HOUR'] = '10'
+      process.env['INPUT_END_HOUR'] = '18'
+      process.env['INPUT_TIME_ZONE'] = 'Etc/UTC'
       process.env['GITHUB_REPOSITORY'] = 'hamuyuuki/pushing-hours-restriction'
 
       const np = process.execPath
