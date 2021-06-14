@@ -36,8 +36,8 @@ export function currentPushableHours(
 export async function updateBranchRestrictionRule(
   appId: number,
   privateKey: string,
-  repository_owner: string,
-  repository_name: string,
+  repositoryOwner: string,
+  repositoryName: string,
   restrictsPushes: boolean
 ): Promise<void> {
   const octokit = new Octokit({
@@ -50,8 +50,8 @@ export async function updateBranchRestrictionRule(
 
   const installationId = (
     await octokit.rest.apps.getRepoInstallation({
-      owner: repository_owner,
-      repo: repository_name
+      owner: repositoryOwner,
+      repo: repositoryName
     })
   ).data.id
 
@@ -68,8 +68,8 @@ export async function updateBranchRestrictionRule(
   >({
     query: DefaultBranchProtectionRule,
     variables: {
-      owner: repository_owner,
-      name: repository_name
+      owner: repositoryOwner,
+      name: repositoryName
     }
   })
 

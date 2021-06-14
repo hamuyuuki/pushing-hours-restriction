@@ -20,11 +20,11 @@ export function getInputs(): {
 }
 
 export function getContext(): {
-  repository_owner: string
-  repository_name: string
+  repositoryOwner: string
+  repositoryName: string
 } {
   return {
-    repository_owner: github.context.repo.owner,
-    repository_name: github.context.repo.repo
+    repositoryOwner: github.context.repo.owner,
+    repositoryName: github.context.repo.repo
   }
 }
