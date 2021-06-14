@@ -11,7 +11,7 @@ export function getInputs(): {
 } {
   return {
     appId: +core.getInput('app_id'),
-    privateKey: core.getInput('privateKey'),
+    privateKey: core.getInput('private_key'),
     weekdays: core.getInput('weekdays').replace(' ', '').split(','),
     startHour: +core.getInput('startHour'),
     endHour: +core.getInput('endHour'),

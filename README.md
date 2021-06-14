@@ -50,7 +50,7 @@ jobs:
       - uses: hamuyuuki/pushing-hours-restriction@v0.7.0
         with:
           app_id: ${{ secrets.PUSHING_HOURS_RESTRICTION_APP_ID }}
-          privateKey: ${{ secrets.PUSHING_HOURS_RESTRICTION_PRIVATE_KEY }}
+          private_key: ${{ secrets.PUSHING_HOURS_RESTRICTION_PRIVATE_KEY }}
           startHour: 9
           endHour: 18
 ```
@@ -72,7 +72,7 @@ jobs:
       - uses: hamuyuuki/pushing-hours-restriction@v0.7.0
         with:
           app_id: ${{ secrets.PUSHING_HOURS_RESTRICTION_APP_ID }}
-          privateKey: ${{ secrets.PUSHING_HOURS_RESTRICTION_PRIVATE_KEY }}
+          private_key: ${{ secrets.PUSHING_HOURS_RESTRICTION_PRIVATE_KEY }}
           startHour: 9
           endHour: 18
 ```
@@ -83,7 +83,7 @@ jobs:
 
 If you authenticate with a GitHub App, you should set this input. You can set **App Id** of your GitHub App.
 
-## privateKey
+## private_key
 
 If you authenticate with a GitHub App, you should set this input. You can set **Private key** of your GitHub App.
 

@@ -5,7 +5,7 @@ inputs:
   app_id:
     required: true
     description: 'If you authenticate with a GitHub App, you should set this input. You can set App Id of your GitHub App.'
-  privateKey:
+  private_key:
     required: true
     description: 'If you authenticate with a GitHub App, you should set this input. You can set Private key of your GitHub App.'
   weekdays:
