@@ -12,7 +12,7 @@ inputs:
     required: false
     default: 'MON,TUE,WED,THU'
     description: "You can set a comma delimited short weekday (e.g. 'MON,TUE'). When you set a value to weekdays, you can enable pushing hours on that weekdays."
-  startHour:
+  start_hour:
     required: true
     description: 'You can set a start of pushing hours.'
   endHour:

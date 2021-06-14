@@ -13,7 +13,7 @@ export function getInputs(): {
     appId: +core.getInput('app_id'),
     privateKey: core.getInput('private_key'),
     weekdays: core.getInput('weekdays').replace(' ', '').split(','),
-    startHour: +core.getInput('startHour'),
+    startHour: +core.getInput('start_hour'),
     endHour: +core.getInput('endHour'),
     timeZone: core.getInput('timeZone')
   }

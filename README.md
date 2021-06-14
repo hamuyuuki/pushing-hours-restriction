@@ -51,7 +51,7 @@ jobs:
         with:
           app_id: ${{ secrets.PUSHING_HOURS_RESTRICTION_APP_ID }}
           private_key: ${{ secrets.PUSHING_HOURS_RESTRICTION_PRIVATE_KEY }}
-          startHour: 9
+          start_hour: 9
           endHour: 18
 ```
 
@@ -62,7 +62,7 @@ name: Pushing Hours Restriction
 
 on:
   schedule:
-    # NOTE: Execute startHour and endHour from Monday to Thursday with UTC
+    # NOTE: Execute start_hour and endHour from Monday to Thursday with UTC
     - cron: '0 9,18 * * MON-THU'
 
 jobs:
@@ -73,7 +73,7 @@ jobs:
         with:
           app_id: ${{ secrets.PUSHING_HOURS_RESTRICTION_APP_ID }}
           private_key: ${{ secrets.PUSHING_HOURS_RESTRICTION_PRIVATE_KEY }}
-          startHour: 9
+          start_hour: 9
           endHour: 18
 ```
 
@@ -91,7 +91,7 @@ If you authenticate with a GitHub App, you should set this input. You can set **
 
 This input is optional. You can set a comma delimited short weekday name (e.g. `'MON,TUE'`). When you set a value to weekdays, you can enable pushing hours on that weekdays. The default value is `'MON,TUE,WED,THU'`.
 
-## startHour
+## start_hour
 
 This input is required. You can set a start of pushing hours.
 
