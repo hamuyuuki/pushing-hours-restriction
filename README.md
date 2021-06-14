@@ -52,7 +52,7 @@ jobs:
           app_id: ${{ secrets.PUSHING_HOURS_RESTRICTION_APP_ID }}
           private_key: ${{ secrets.PUSHING_HOURS_RESTRICTION_PRIVATE_KEY }}
           start_hour: 9
-          endHour: 18
+          end_hour: 18
 ```
 
 If you want reduce the number of executing actions, you can put this code.
@@ -62,7 +62,7 @@ name: Pushing Hours Restriction
 
 on:
   schedule:
-    # NOTE: Execute start_hour and endHour from Monday to Thursday with UTC
+    # NOTE: Execute start_hour and end_hour from Monday to Thursday with UTC
     - cron: '0 9,18 * * MON-THU'
 
 jobs:
@@ -74,7 +74,7 @@ jobs:
           app_id: ${{ secrets.PUSHING_HOURS_RESTRICTION_APP_ID }}
           private_key: ${{ secrets.PUSHING_HOURS_RESTRICTION_PRIVATE_KEY }}
           start_hour: 9
-          endHour: 18
+          end_hour: 18
 ```
 
 # Inputs
@@ -95,7 +95,7 @@ This input is optional. You can set a comma delimited short weekday name (e.g. `
 
 This input is required. You can set a start of pushing hours.
 
-## endHour
+## end_hour
 
 This input is required. You can set an end of pushing hours.
 

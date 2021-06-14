@@ -9,7 +9,7 @@ describe('index', () => {
       process.env['INPUT_PRIVATE_KEY'] = process.env.PRIVATE_KEY
       process.env['INPUT_WEEKDAYS'] = 'MON,TUE,WED,THU'
       process.env['INPUT_START_HOUR'] = '10'
-      process.env['INPUT_ENDHOUR'] = '18'
+      process.env['INPUT_END_HOUR'] = '18'
       process.env['INPUT_TIMEZONE'] = 'Etc/UTC'
       process.env['GITHUB_REPOSITORY'] = 'hamuyuuki/pushing-hours-restriction'
 
