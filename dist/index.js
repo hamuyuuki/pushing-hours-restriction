@@ -31,19 +31,19 @@ const core = __importStar(__nccwpck_require__(2186));
 const github = __importStar(__nccwpck_require__(5438));
 function getInputs() {
     return {
-        appId: +core.getInput('appId'),
-        privateKey: core.getInput('privateKey'),
+        appId: +core.getInput('app_id'),
+        privateKey: core.getInput('private_key'),
         weekdays: core.getInput('weekdays').replace(' ', '').split(','),
-        startHour: +core.getInput('startHour'),
-        endHour: +core.getInput('endHour'),
-        timeZone: core.getInput('timeZone')
+        startHour: +core.getInput('start_hour'),
+        endHour: +core.getInput('end_hour'),
+        timeZone: core.getInput('time_zone')
     };
 }
 exports.getInputs = getInputs;
 function getContext() {
     return {
-        repository_owner: github.context.repo.owner,
-        repository_name: github.context.repo.repo
+        repositoryOwner: github.context.repo.owner,
+        repositoryName: github.context.repo.repo
     };
 }
 exports.getContext = getContext;
@@ -1808,7 +1808,7 @@ function run() {
         try {
             const inputs = actions_toolkit_1.getInputs();
             const context = actions_toolkit_1.getContext();
-            yield pushing_hours_restriction_1.updateBranchRestrictionRule(inputs.appId, inputs.privateKey, context.repository_owner, context.repository_name, !pushing_hours_restriction_1.currentPushableHours(inputs.weekdays, inputs.startHour, inputs.endHour, inputs.timeZone));
+            yield pushing_hours_restriction_1.updateBranchRestrictionRule(inputs.appId, inputs.privateKey, context.repositoryOwner, context.repositoryName, !pushing_hours_restriction_1.currentPushableHours(inputs.weekdays, inputs.startHour, inputs.endHour, inputs.timeZone));
         }
         catch (error) {
             core.setFailed(error.message);
@@ -1855,7 +1855,7 @@ function currentPushableHours(weekdays, startHour, endHour, timeZone) {
     return true;
 }
 exports.currentPushableHours = currentPushableHours;
-function updateBranchRestrictionRule(appId, privateKey, repository_owner, repository_name, restrictsPushes) {
+function updateBranchRestrictionRule(appId, privateKey, repositoryOwner, repositoryName, restrictsPushes) {
     var _a;
     return __awaiter(this, void 0, void 0, function* () {
         const octokit = new rest_1.Octokit({
@@ -1866,8 +1866,8 @@ function updateBranchRestrictionRule(appId, privateKey, repository_owner, reposi
             }
         });
         const installationId = (yield octokit.rest.apps.getRepoInstallation({
-            owner: repository_owner,
-            repo: repository_name
+            owner: repositoryOwner,
+            repo: repositoryName
         })).data.id;
         const installedGithubApp = yield auth_app_1.createAppAuth({
             appId,
@@ -1876,8 +1876,8 @@ function updateBranchRestrictionRule(appId, privateKey, repository_owner, reposi
         const { data: { repository } } = yield client_1.githubClient(installedGithubApp.token).query({
             query: graphql_1.DefaultBranchProtectionRule,
             variables: {
-                owner: repository_owner,
-                name: repository_name
+                owner: repositoryOwner,
+                name: repositoryName
             }
         });
         if (!((_a = repository === null || repository === void 0 ? void 0 : repository.defaultBranchRef) === null || _a === void 0 ? void 0 : _a.branchProtectionRule)) {

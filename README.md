@@ -47,7 +47,7 @@ jobs:
   pushing_hours_restriction:
     runs-on: ubuntu-latest
     steps:
-      - uses: hamuyuuki/pushing-hours-restriction@v0.7.0
+      - uses: hamuyuuki/pushing-hours-restriction@v0.8.0
         with:
           app_id: ${{ secrets.PUSHING_HOURS_RESTRICTION_APP_ID }}
           private_key: ${{ secrets.PUSHING_HOURS_RESTRICTION_PRIVATE_KEY }}
@@ -69,7 +69,7 @@ jobs:
   pushing_hours_restriction:
     runs-on: ubuntu-latest
     steps:
-      - uses: hamuyuuki/pushing-hours-restriction@v0.7.0
+      - uses: hamuyuuki/pushing-hours-restriction@v0.8.0
         with:
           app_id: ${{ secrets.PUSHING_HOURS_RESTRICTION_APP_ID }}
           private_key: ${{ secrets.PUSHING_HOURS_RESTRICTION_PRIVATE_KEY }}
