@@ -1,6 +1,9 @@
 name: 'Pushing Hours Restriction'
 description: 'Add pushing hours restriction to the Branch protection rule of the default branch'
 author: 'hamuyuuki'
+branding:
+  icon: 'calendar'
+  color: 'green'
 inputs:
   app_id:
     required: true
