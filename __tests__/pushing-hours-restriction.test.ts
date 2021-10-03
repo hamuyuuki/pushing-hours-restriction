@@ -9,6 +9,7 @@ describe('pushing-hours-restriction', () => {
     const endHour = 18
     const weekdays = ['MON', 'TUE', 'WED', 'THU']
     const timeZone = 'Asia/Tokyo'
+    const holiday = 'JP'
 
     afterEach(() => {
       clear()
@@ -55,25 +56,49 @@ describe('pushing-hours-restriction', () => {
         it('should be false when the current time is less than startHour', () => {
           advanceTo(lessThanStartHour)
           expect(
-            currentPushableHours(weekdays, startHour, endHour, timeZone)
+            currentPushableHours(
+              weekdays,
+              startHour,
+              endHour,
+              timeZone,
+              holiday
+            )
           ).toBe(false)
         })
         it('should be true when the current time is greater than or equal to startHour', () => {
           advanceTo(greaterThanOrEqualToStartHour)
           expect(
-            currentPushableHours(weekdays, startHour, endHour, timeZone)
+            currentPushableHours(
+              weekdays,
+              startHour,
+              endHour,
+              timeZone,
+              holiday
+            )
           ).toBe(true)
         })
         it('should be true when the current time is less than endHour', () => {
           advanceTo(lessThanEndHour)
           expect(
-            currentPushableHours(weekdays, startHour, endHour, timeZone)
+            currentPushableHours(
+              weekdays,
+              startHour,
+              endHour,
+              timeZone,
+              holiday
+            )
           ).toBe(true)
         })
         it('should be false when the current time is greater than or equal to endHour', () => {
           advanceTo(greaterThanOrEqualToEndHour)
           expect(
-            currentPushableHours(weekdays, startHour, endHour, timeZone)
+            currentPushableHours(
+              weekdays,
+              startHour,
+              endHour,
+              timeZone,
+              holiday
+            )
           ).toBe(false)
         })
       }
@@ -113,25 +138,49 @@ describe('pushing-hours-restriction', () => {
         it('should be false when the current time is less than startHour', () => {
           advanceTo(lessThanStartHour)
           expect(
-            currentPushableHours(weekdays, startHour, endHour, timeZone)
+            currentPushableHours(
+              weekdays,
+              startHour,
+              endHour,
+              timeZone,
+              holiday
+            )
           ).toBe(false)
         })
         it('should be false when the current time is greater than or equal to startHour', () => {
           advanceTo(greaterThanOrEqualToStartHour)
           expect(
-            currentPushableHours(weekdays, startHour, endHour, timeZone)
+            currentPushableHours(
+              weekdays,
+              startHour,
+              endHour,
+              timeZone,
+              holiday
+            )
           ).toBe(false)
         })
         it('should be false when the current time is less than endHour', () => {
           advanceTo(lessThanEndHour)
           expect(
-            currentPushableHours(weekdays, startHour, endHour, timeZone)
+            currentPushableHours(
+              weekdays,
+              startHour,
+              endHour,
+              timeZone,
+              holiday
+            )
           ).toBe(false)
         })
         it('should be false when the current time is greater than or equal to endHour', () => {
           advanceTo(greaterThanOrEqualToEndHour)
           expect(
-            currentPushableHours(weekdays, startHour, endHour, timeZone)
+            currentPushableHours(
+              weekdays,
+              startHour,
+              endHour,
+              timeZone,
+              holiday
+            )
           ).toBe(false)
         })
       }
@@ -141,25 +190,25 @@ describe('pushing-hours-restriction', () => {
       it('should be false when the current time is less than startHour', () => {
         advanceTo(toDate('2020-11-03T09:59:59', {timeZone: 'Asia/Tokyo'}))
         expect(
-          currentPushableHours(weekdays, startHour, endHour, timeZone)
+          currentPushableHours(weekdays, startHour, endHour, timeZone, holiday)
         ).toBe(false)
       })
       it('should be false when the current time is greater than or equal to startHour', () => {
         advanceTo(toDate('2020-11-03T10:00:00', {timeZone: 'Asia/Tokyo'}))
         expect(
-          currentPushableHours(weekdays, startHour, endHour, timeZone)
+          currentPushableHours(weekdays, startHour, endHour, timeZone, holiday)
         ).toBe(false)
       })
       it('should be false when the current time is less than endHour', () => {
         advanceTo(toDate('2020-11-03T17:59:59', {timeZone: 'Asia/Tokyo'}))
         expect(
-          currentPushableHours(weekdays, startHour, endHour, timeZone)
+          currentPushableHours(weekdays, startHour, endHour, timeZone, holiday)
         ).toBe(false)
       })
       it('should be false when the current time is greater than or equal to endHour', () => {
         advanceTo(toDate('2020-11-03T18:00:00', {timeZone: 'Asia/Tokyo'}))
         expect(
-          currentPushableHours(weekdays, startHour, endHour, timeZone)
+          currentPushableHours(weekdays, startHour, endHour, timeZone, holiday)
         ).toBe(false)
       })
     })
