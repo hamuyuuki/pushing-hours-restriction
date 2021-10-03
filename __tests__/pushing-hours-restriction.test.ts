@@ -136,5 +136,32 @@ describe('pushing-hours-restriction', () => {
         })
       }
     )
+
+    describe('the current day is holiday', () => {
+      it('should be false when the current time is less than startHour', () => {
+        advanceTo(toDate('2020-11-03T09:59:59', {timeZone: 'Asia/Tokyo'}))
+        expect(
+          currentPushableHours(weekdays, startHour, endHour, timeZone)
+        ).toBe(false)
+      })
+      it('should be false when the current time is greater than or equal to startHour', () => {
+        advanceTo(toDate('2020-11-03T10:00:00', {timeZone: 'Asia/Tokyo'}))
+        expect(
+          currentPushableHours(weekdays, startHour, endHour, timeZone)
+        ).toBe(false)
+      })
+      it('should be false when the current time is less than endHour', () => {
+        advanceTo(toDate('2020-11-03T17:59:59', {timeZone: 'Asia/Tokyo'}))
+        expect(
+          currentPushableHours(weekdays, startHour, endHour, timeZone)
+        ).toBe(false)
+      })
+      it('should be false when the current time is greater than or equal to endHour', () => {
+        advanceTo(toDate('2020-11-03T18:00:00', {timeZone: 'Asia/Tokyo'}))
+        expect(
+          currentPushableHours(weekdays, startHour, endHour, timeZone)
+        ).toBe(false)
+      })
+    })
   })
 })
