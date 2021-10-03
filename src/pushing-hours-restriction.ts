@@ -27,8 +27,16 @@ export function currentPushableHours(
   holiday: string
 ): boolean {
   const date_now = utcToZonedTime(new Date(), timeZone)
+  const date_after = utcToZonedTime(
+    new Date().setDate(new Date().getDate() + 1),
+    timeZone
+  )
 
-  if (new Holidays(holiday).isHoliday(date_now)) return false
+  if (
+    new Holidays(holiday).isHoliday(date_now) ||
+    new Holidays(holiday).isHoliday(date_after)
+  )
+    return false
   if (!weekdays.includes(convertToWeekdayName(date_now.getDay()))) return false
   if (date_now.getHours() < startHour || endHour <= date_now.getHours())
     return false
