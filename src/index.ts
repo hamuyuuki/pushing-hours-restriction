@@ -20,7 +20,8 @@ async function run(): Promise<void> {
         inputs.weekdays,
         inputs.startHour,
         inputs.endHour,
-        inputs.timeZone
+        inputs.timeZone,
+        inputs.holiday
       )
     )
   } catch (error) {
