@@ -25,6 +25,10 @@ inputs:
     required: false
     default: 'Etc/UTC'
     description: "You can set an IANA time zone name (e.g. 'Asia/Tokyo'). When you set a value to time_zone, you can enable pushing hours with that time zone."
+  holiday:
+    required: false
+    default: ''
+    description: "You can set a 2 digit country code (e.g. 'JP'). When you set a value to holiday, you can not enable pushing hours on that holiday and a day before that holiday."
 runs:
   using: 'node12'
   main: 'dist/index.js'
