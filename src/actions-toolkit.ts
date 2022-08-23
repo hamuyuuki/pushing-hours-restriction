@@ -8,6 +8,7 @@ export function getInputs(): {
   startHour: number
   endHour: number
   timeZone: string
+  holiday: string
 } {
   return {
     appId: +core.getInput('app_id'),
@@ -15,7 +16,8 @@ export function getInputs(): {
     weekdays: core.getInput('weekdays').replace(' ', '').split(','),
     startHour: +core.getInput('start_hour'),
     endHour: +core.getInput('end_hour'),
-    timeZone: core.getInput('time_zone')
+    timeZone: core.getInput('time_zone'),
+    holiday: core.getInput('holiday')
   }
 }
 

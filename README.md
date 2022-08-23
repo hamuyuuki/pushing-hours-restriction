@@ -103,6 +103,10 @@ This input is required. You can set an end of pushing hours.
 
 This input is optional. You can set an IANA time zone name (e.g. `'Asia/Tokyo'`). When you set a value to time_zone, you can enable pushing hours with that time zone. The default value is `'Etc/UTC'`.
 
+## holiday
+
+You can set a 2 digit country code (e.g. 'JP'). When you set a value to holiday, you can not enable pushing hours on that holiday and a day before that holiday. The default value is `''`.
+
 # Limitation
 
 - Only run this GitHub Action on organization repositories.
