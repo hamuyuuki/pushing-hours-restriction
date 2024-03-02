@@ -5,9 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version-file: 'package.json'
       - run: npm install
       - run: npm run build
   lint:
@@ -15,9 +15,9 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version-file: 'package.json'
       - run: npm install
       - run: npm run build
       - run: npm run lint:format
@@ -27,9 +27,9 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version-file: 'package.json'
       - run: npm install
       - run: npm run build
       - run: npm run test

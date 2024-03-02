@@ -4,7 +4,7 @@
 
 ### Dependencies
 
-- Node.js 16.x
+- Node.js 20.x
 
 ### Setup
 

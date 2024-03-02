@@ -12,9 +12,9 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version-file: 'package.json'
       - name: Check deployable a GitHub Action
         id: checking-deployable-github-action
         run: |
@@ -27,9 +27,9 @@ jobs:
     if: ${{ needs.checking-deployable.outputs.new_tag }}
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version-file: 'package.json'
       - run: npm install
       - run: npm run build
       - run: npm run package
